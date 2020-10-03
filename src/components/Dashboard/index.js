@@ -9,6 +9,8 @@ import {
   Words,
   Paragraph,
   Button,
+  Row,
+  Col,
 } from 'arwes'
 
 import api from '../../services/api'
@@ -47,6 +49,7 @@ function Dashboard() {
   const [workEnd, setWorkEnd] = useState('')
   const [sleepStart, setSleepStart] = useState('')
   const [sleepEnd, setSleepEnd] = useState('')
+  const [sleepIntended, setSleepIntended] = useState('')
 
   async function handleSubmit() {
     await api.post('/schedule_planner', {
@@ -56,6 +59,7 @@ function Dashboard() {
       workEnd,
       sleepStart,
       sleepEnd,
+      sleepIntended,
     })
   }
 
@@ -71,59 +75,80 @@ function Dashboard() {
             </Paragraph>
 
             <Form action="" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name">Name:</label>
-                <input
-                  name="name"
-                  placeholder="John Doe"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+              <Row>
+                <Col>
+                  <label htmlFor="name">Name:</label>
+                  <input
+                    name="name"
+                    placeholder="John Doe"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </Col>
 
-                <label htmlFor="age">Age:</label>
-                <input
-                  name="age"
-                  placeholder="18"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                />
-              </div>
+                <Col>
+                  <label htmlFor="age">Age:</label>
+                  <input
+                    name="age"
+                    placeholder="18"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label htmlFor="work_start">I start working at:</label>
+                  <input
+                    name="work_start"
+                    placeholder="09:00"
+                    value={workStart}
+                    onChange={(e) => setWorkStart(e.target.value)}
+                  />
+                </Col>
 
-              <div>
-                <label htmlFor="work_start">I start working at:</label>
-                <input
-                  name="work_start"
-                  placeholder="09:00"
-                  value={workStart}
-                  onChange={(e) => setWorkStart(e.target.value)}
-                />
+                <Col>
+                  <label htmlFor="work_end">I finish working at:</label>
+                  <input
+                    name="work_end"
+                    placeholder="18:00"
+                    value={workEnd}
+                    onChange={(e) => setWorkEnd(e.target.value)}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label htmlFor="sleep_start">I usually sleep at:</label>
+                  <input
+                    name="sleep_start"
+                    placeholder="22:00"
+                    value={sleepStart}
+                    onChange={(e) => setSleepStart(e.target.value)}
+                  />
+                </Col>
 
-                <label htmlFor="work_end">I finish working at:</label>
-                <input
-                  name="work_end"
-                  placeholder="18:00"
-                  value={workEnd}
-                  onChange={(e) => setWorkEnd(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="sleep_start">I usually sleep at:</label>
-                <input
-                  name="sleep_start"
-                  placeholder="22:00"
-                  value={sleepStart}
-                  onChange={(e) => setSleepStart(e.target.value)}
-                />
-
-                <label htmlFor="sleep_end">I usually wake up at:</label>
-                <input
-                  name="sleep_end"
-                  placeholder="08:00"
-                  value={sleepEnd}
-                  onChange={(e) => setSleepEnd(e.target.value)}
-                />
-              </div>
+                <Col>
+                  <label htmlFor="sleep_end">I usually wake up at:</label>
+                  <input
+                    name="sleep_end"
+                    placeholder="08:00"
+                    value={sleepEnd}
+                    onChange={(e) => setSleepEnd(e.target.value)}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label htmlFor="sleep_intended">I want to sleep at:</label>
+                  <input
+                    name="sleep_intended"
+                    placeholder="08:00"
+                    value={sleepIntended}
+                    onChange={(e) => setSleepIntended(e.target.value)}
+                  />
+                </Col>
+              </Row>
 
               <Button type="submit" animate>
                 Submit
