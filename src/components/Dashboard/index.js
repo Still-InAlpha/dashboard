@@ -49,7 +49,7 @@ function Dashboard() {
   const [sleepEnd, setSleepEnd] = useState('')
 
   async function handleSubmit() {
-    await api.post('/scheduleplanner', {
+    await api.post('/schedule_planner', {
       name,
       age,
       workStart,
