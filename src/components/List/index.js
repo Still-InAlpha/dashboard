@@ -17,6 +17,17 @@ import { Container } from './styles'
 import api from '../../services/api'
 
 export default function List() {
+  //output variables
+  /**
+   * horarios de exercio int[][]
+   */
+
+  useEffect(() => {
+    async function setup() {
+      const response = await api.get('/shedule_programmer')
+    }
+  })
+
   return (
     <ThemeProvider theme={createTheme()}>
       <SoundsProvider sounds={createSounds()}>
