@@ -42,7 +42,7 @@ function Dashboard() {
   return (
     <ThemeProvider theme={createTheme()}>
       <SoundsProvider sounds={createSounds()}>
-        <Arwes>
+        <Arwes animate show>
           <Container>
             <Heading node="h1">
               <Words animate>Welcome, traveler!</Words>
@@ -51,7 +51,6 @@ function Dashboard() {
             <Heading node="h4">
               <Words animate>Let's set up your sleep schedule together</Words>
             </Heading>
-
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Frame
                 animate={true}
@@ -72,9 +71,12 @@ function Dashboard() {
                   }}
                 >
                   <div>
-                    <div className="label">
-                      <label htmlFor="name">Name:</label>
-                    </div>
+                    {anim => (
+                      <div className="label">
+                        <label htmlFor="name">
+                          <Words animate show={anim.entered}>Name:</Words>
+                        </label>
+                      </div>)}
 
                     <input
                       name="name"
